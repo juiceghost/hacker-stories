@@ -6,10 +6,15 @@ import ClassPlace from './ClassPlace';
 import ACTOR_DATA from './data.js';
 import Bar from './Bar';
 import ActorList from './ActorList';
+import { createGlobalStyle } from 'styled-components';
 
-//import './App.css';
 
-
+const GlobalStyle = createGlobalStyle`
+* {
+  margin: 0;
+  padding: 0;
+}
+`
 
 const list = [
   {
@@ -34,8 +39,6 @@ const welcome = {
   greeting: 'Yo',
   title: 'FE20'
 };
-
-
 
 const myArray = ["I'm", "an", "array"];
 const myNumbers = [1, 4, 8];
@@ -71,20 +74,14 @@ du har data i en variabel innehållandes skådisar.
 
 */
 
-/*list.map(function (item) {
-        return (
-          <ActorItem ...? />);
-      })*/
-
-
-
-
 
 const element = <Place location="Kilimanjaro" elevation="1500" />;
 
 function App() {
   //console.log(ACTOR_DATA)
   return (
+    <>
+    <GlobalStyle />
     <div>
       <h1>My Hacker Stories</h1>
 
@@ -108,6 +105,7 @@ function App() {
           </div>);
       })*/}
     </div>
+    </>
   );
 }
 
