@@ -5,10 +5,11 @@ import Place from './Place';
 import ClassPlace from './ClassPlace';
 import ACTOR_DATA from './data.js';
 import Bar from './Bar';
+import ActorList from './ActorList';
 
-import './App.css';
+//import './App.css';
 
-const imageURL = "https://image.tmdb.org/t/p/original";
+
 
 const list = [
   {
@@ -75,23 +76,9 @@ du har data i en variabel innehållandes skådisar.
           <ActorItem ...? />);
       })*/
 
-function ActorList(props) {
-  //console.log(props.data)
-  // skriv om ActorList's render så att den renderar en ActorItem
-  // för varje skådis i props.data med hjälp av .map
-  return (<ul>{props.data.map(function (item) {
-    return (<ActorItem key={item.id} item={item} />);
-  })}</ul>);
-}
 
-function ActorItem(props) {
-  //console.log(props.item)
-  return (<li>
-    <img src={imageURL + props.item.profile_path} width="100%" alt="Actor" />
-    <span>{props.item.name}</span><span>playing</span><span>{props.item.character}</span>
-  </li>)
 
-}
+
 
 const element = <Place location="Kilimanjaro" elevation="1500" />;
 
