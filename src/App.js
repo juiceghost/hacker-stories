@@ -1,12 +1,16 @@
 //import React from 'react';
+import { useState, useEffect } from 'react';
+
 import Hello from './Hello';
 
 import Place from './Place';
 import ClassPlace from './ClassPlace';
-import ACTOR_DATA from './data.js';
+
+import ACTOR_DATA, { API_URL, NOW_PLAYING, API_KEY, SETTINGS } from './data.js';
 import Bar from './Bar';
 import ActorList from './ActorList';
 import { createGlobalStyle } from 'styled-components';
+import MovieList from './MovieList';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -47,8 +51,6 @@ function getTitle(title) {
   return 'From Function' + title;
 }
 
-// const map1 = array1.map(x => x * 2);
-
 function writePTags(arr) {
   return arr.map(function (x, index) {
     console.log(x)
@@ -64,36 +66,31 @@ function writePTagsWithoutMap(arr) {
   return newArr
 }
 
-/*
-du har data i en variabel innehållandes skådisar.
-1. skapa en ny komponent som får vara en listkomponent
-2. skapa en ny komponent som får vara itemcomponent
-3. det ska resultera i en lista med skådisarna, namn och bild
--- klar!
-4. skapa en basic layout för "korten", ett kort per skådis
-
-*/
-
-
 const element = <Place location="Kilimanjaro" elevation="1500" />;
 
 function App() {
+  const [movies, setMovies] = useState([])
+  useEffect(() => {
+    fetch(API_URL + NOW_PLAYING + API_KEY + SETTINGS)
+      .then(response => response.json())
+      .then(data => setMovies(data.results))
+  }, [])
   //console.log(ACTOR_DATA)
   return (
     <>
-    <GlobalStyle />
-    <div>
-      <h1>My Hacker Stories</h1>
+      <GlobalStyle />
+      <div>
+        <h1>My Hacker Stories</h1>
 
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
+        <label htmlFor="search">Search: </label>
+        <input id="search" type="text" />
 
-      <Bar />
-      <Hello />
-      <ActorList data={ACTOR_DATA.cast} />
+        <Bar />
+        <MovieList />
+        {/* <ActorList data={ACTOR_DATA.cast} /> */}
 
-      {/* <ClassPlace location="Kilimanjaro" elevation="1500" />; */}
-      {/*list.map(function (item) {
+        {/* <ClassPlace location="Kilimanjaro" elevation="1500" />; */}
+        {/*list.map(function (item) {
         return (
           <div key={item.objectID}>
             <span>
@@ -104,7 +101,7 @@ function App() {
             <span>{item.points}</span>
           </div>);
       })*/}
-    </div>
+      </div>
     </>
   );
 }
