@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const imageURL = "https://image.tmdb.org/t/p/original";
+import { IMAGE_URL } from './data';
 
 /*
 li {
@@ -35,12 +35,12 @@ margin: 12px;
 
 
 function ActorItem(props) {
-    //console.log(props.item)
-    return (<StyledLI>
-      <img src={imageURL + props.item.profile_path} width="100%" alt="Actor" />
-      <span>{props.item.name}</span><span>playing</span><span>{props.item.character}</span>
-    </StyledLI>)
-  
-  }
+  //console.log(props.item)
+  return (<StyledLI>
+    <img src={IMAGE_URL + props.item.profile_path} width="100%" alt="Actor" />
+    <span>{props.item.name}</span><span>playing</span><span>{props.item.character}</span>
+  </StyledLI>)
+
+}
 
 export default ActorItem;

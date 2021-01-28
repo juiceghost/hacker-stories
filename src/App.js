@@ -6,7 +6,7 @@ import Hello from './Hello';
 import Place from './Place';
 import ClassPlace from './ClassPlace';
 
-import ACTOR_DATA, { API_URL, NOW_PLAYING, API_KEY, SETTINGS } from './data.js';
+import ACTOR_DATA, { API_URL, NOW_PLAYING, TOP_RATED, API_KEY, SETTINGS } from './data.js';
 import Bar from './Bar';
 import ActorList from './ActorList';
 import { createGlobalStyle } from 'styled-components';
@@ -69,9 +69,11 @@ function writePTagsWithoutMap(arr) {
 const element = <Place location="Kilimanjaro" elevation="1500" />;
 
 function App() {
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]);
+  const [display, setDisplay] = useState(NOW_PLAYING);
+
   useEffect(() => {
-    fetch(API_URL + NOW_PLAYING + API_KEY + SETTINGS)
+    fetch(API_URL + display + API_KEY + SETTINGS)
       .then(response => response.json())
       .then(data => setMovies(data.results))
   }, [])
@@ -86,7 +88,13 @@ function App() {
         <input id="search" type="text" />
 
         <Bar />
-        <MovieList />
+        <MovieList data={movies} />
+        {/* steg 1: lägg till 2 st knappar Now Playing, Top Rated
+            steg 2: gör varsin funktion som körs vid onClick
+            steg 3: se till att vid klick på Now Playing-knappen visas Now Playing-filmerna
+            steg 4:          -- " --         Top Rated-knappen visas Top Rated
+            ledtråd: setDisplay() används inte nu, det bör den göra efter ni är klara
+        */}
         {/* <ActorList data={ACTOR_DATA.cast} /> */}
 
         {/* <ClassPlace location="Kilimanjaro" elevation="1500" />; */}
