@@ -6,7 +6,7 @@ import Bar from './Bar';
 import ActorList from './ActorList';
 import { createGlobalStyle } from 'styled-components';
 import MovieList from './MovieList';
-
+import MiddleOne from './MiddleOne';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -38,7 +38,8 @@ function App() {
         <Bar />
         <button onClick={() => setDisplay(NOW_PLAYING)}>NOW PLAYING</button>
         <button onClick={() => setDisplay(TOP_RATED)}>TOP RATED</button>
-        <MovieList data={movies} headerText={display == NOW_PLAYING ? 'Now playing' : 'Top Rated'} />
+        <MiddleOne data={movies} headerText={display == NOW_PLAYING ? 'Now playing' : 'Top Rated'} />
+        {/* <MovieList data={movies} headerText={display == NOW_PLAYING ? 'Now playing' : 'Top Rated'} /> */}
         {/* steg 1: lägg till 2 st knappar Now Playing, Top Rated
             steg 2: gör varsin funktion som körs vid onClick
             steg 3: se till att vid klick på Now Playing-knappen visas Now Playing-filmerna
