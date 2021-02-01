@@ -1,10 +1,10 @@
 import MiddleThree from './MiddleThree';
 
-function MiddleTwo(props) {
+function MiddleTwo() {
     return (
         <>
             <p>Hej från MiddleTwo</p>
-            <MiddleThree {...props} />
+            <MiddleThree />
         </>)
 }
 

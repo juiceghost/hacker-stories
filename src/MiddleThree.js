@@ -1,10 +1,12 @@
 import MovieList from './MovieList';
 
-function MiddleThree(props) {
+import MovieContext from './MovieContext';
+
+function MiddleThree() {
     return (
         <>
-            <p>Hej från MIddleThree</p>
-            <MovieList {...props} />
+            <p>Hej från MiddleThree</p>
+            <MovieList />
         </>);
 }
 

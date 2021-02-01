@@ -1,10 +1,10 @@
 import MiddleTwo from './MiddleTwo';
 
-function MiddleOne(props) {
-    console.log(props);
+function MiddleOne() {
+
     return (<>
         <p>Hej från MiddleOne</p>
-        <MiddleTwo {...props} />
+        <MiddleTwo />
     </>)
 }
 
